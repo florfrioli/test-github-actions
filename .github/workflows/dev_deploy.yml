@@ -5,6 +5,7 @@ on:
     inputs: 
       tags:
         description: 'Tags'
+  workflow_call:
 
 jobs:
   build_and_test:
