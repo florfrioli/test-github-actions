@@ -13,7 +13,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v4
         with:
           # All of these options are optional, so you can remove them if you are happy with the defaults
-          concurrent_skipping: 'never'
+          concurrent_skipping: 'same_content'
           do_not_skip: '[]'
 
   build_and_test:
