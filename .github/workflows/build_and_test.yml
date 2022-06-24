@@ -1,0 +1,21 @@
+name: Build & Test
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - master
+      - /release-.*/
+  workflow_call:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+    # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Prueba 1
+      run: echo 'Prueba 1'
+    - name: Prueba 2
+      run: echo 'Prueba 2'
