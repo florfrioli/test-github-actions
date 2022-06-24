@@ -18,8 +18,8 @@ jobs:
           do_not_skip: '["pull_request", "schedule"]'
 
   build_and_test:
-    needs: pre_job
-    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
+    needs: check_build_and_test
+    if: ${{ needs.check_build_and_test.outputs.should_skip != 'true' }}
     uses: ./.github/workflows/build_and_test.yml
 
   deploy-dev:
