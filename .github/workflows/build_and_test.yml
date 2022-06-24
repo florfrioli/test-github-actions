@@ -19,9 +19,3 @@ jobs:
       run: echo 'Prueba 1'
     - name: Prueba 2
       run: echo 'Prueba 2'
-    - id: skip_check
-      uses: fkirc/skip-duplicate-actions@v3.4.0
-      with:
-        skip_after_successful_duplicate: 'true'
-    outputs:
-      should_skip: ${{ steps.skip_check.outputs.should_skip }}
