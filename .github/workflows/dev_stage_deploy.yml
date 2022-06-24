@@ -3,24 +3,15 @@ name: Dev Stage deploy test
 on: [workflow_dispatch]
 
 jobs:
-  check_build_and_test:
-    runs-on: ubuntu-latest
-    outputs: 
-      should_skip: ${{ steps.skip_check.outputs.should_skip }}
-      reason: ${{ steps.skip_check.outputs.reason }}
-    steps:
-      - id: skip_check
-        uses: fkirc/skip-duplicate-actions@v4
-        with:
-          # All of these options are optional, so you can remove them if you are happy with the defaults
-          concurrent_skipping: 'same_content'
-          skip_after_successful_duplicate:
-          do_not_skip: '[]'
-
+  
   build_and_test:
-    needs: check_build_and_test
-    if: ${{ needs.check_build_and_test.outputs.should_skip != 'true' }}
-    uses: ./.github/workflows/build_and_test.yml
+    name: Validate Release
+    uses: xembly/validate-workflow-status@v1
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}  # This token is provided by Github Actions, you do not need to create your own token
+      workflow: build_and_test
+      branch: main     #optional
+      status: success  # optional
 
   deploy-dev:
     name: Deploy Dev
