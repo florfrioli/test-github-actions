@@ -1,0 +1,23 @@
+name: Stage deploy test
+
+on:
+  workflow_dispatch:
+    inputs: 
+      tags:
+        description: 'Tags'
+
+jobs:
+  build_and_test:
+    uses: ./.github/workflows/build_and_test.yml
+
+  deploy-stage:
+    name: Deploy Stage
+    runs-on: ubuntu-latest
+    needs: [build_and_test]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install AWS & ElasticBeanstalk dependencies
+        run: echo 'Run run'
+      - name: Configure AWS Credentials
+        run: echo 'Run run'
