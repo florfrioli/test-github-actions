@@ -11,6 +11,8 @@ jobs:
     uses: ./.github/workflows/build_and_test.yml
 
   deploy-dev:
+    on: 
+      workflow_dispatch:
     runs-on: ubuntu-latest
     needs: [build_and_test]
     steps:
