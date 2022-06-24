@@ -5,13 +5,14 @@ on: [workflow_dispatch]
 jobs:
   
   build_and_test:
-    name: Validate Release
-    uses: xembly/validate-workflow-status@v1
-    with:
-      token: ${{ secrets.GITHUB_TOKEN }}  # This token is provided by Github Actions, you do not need to create your own token
-      workflow: build_and_test
-      branch: main     #optional
-      status: success  # optional
+    steps:
+      - name: Validate Release
+        uses: xembly/validate-workflow-status@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # This token is provided by Github Actions, you do not need to create your own token
+          workflow: build_and_test
+          branch: main     #optional
+          status: success  # optional
 
   deploy-dev:
     name: Deploy Dev
