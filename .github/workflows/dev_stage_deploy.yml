@@ -14,7 +14,7 @@ jobs:
         with:
           # All of these options are optional, so you can remove them if you are happy with the defaults
           concurrent_skipping: 'same_content'
-          skip_after_successful_duplicate: 'true'
+          skip_after_successful_duplicate:
           do_not_skip: '[]'
 
   build_and_test:
