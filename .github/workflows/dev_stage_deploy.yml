@@ -5,6 +5,8 @@ on: [workflow_dispatch]
 jobs:
   
   build_and_test:
+    name: spec
+    runs-on: ubuntu-latest
     steps:
       - name: Validate Release
         uses: xembly/validate-workflow-status@v1
