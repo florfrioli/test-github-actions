@@ -15,9 +15,9 @@ jobs:
     steps:
       - name: Approve deploy 
         uses: trstringer/manual-approval@v1
-          with:
-            secret: ${{ github.TOKEN }}
-            approvers: florfrioli
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: florfrioli
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install AWS & ElasticBeanstalk dependencies
