@@ -15,8 +15,12 @@ jobs:
     # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Prueba 1
-      run: echo 'Prueba 1'
-    - name: Prueba 2
-      run: echo 'Prueba 2'
+    - name: Github head ref and sha
+      run: echo '${{ github.head_ref }}.${{ github.sha }}'
+    - name: Github Ref
+      run: echo '${{ github.ref }}'
+    - name: Github Workflow
+      run: echo '${{ github.workflow }}'
+    - name: Github Ref name
+      run: echo '${{ github.ref_name }}'
    
