@@ -4,6 +4,8 @@ on: [workflow_dispatch]
 
 jobs:
   build_and_test:
+    name: Teststststs
+    if: startsWith(github.ref, 'release')
     uses: ./.github/workflows/build_and_test.yml
 
   deploy-dev:
