@@ -1,7 +1,5 @@
 name: Build & Test
 on:
-  pull_request:
-    types: [opened, synchronize]
   workflow_call:
 
 jobs:

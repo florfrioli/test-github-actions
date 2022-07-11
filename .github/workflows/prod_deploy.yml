@@ -1,13 +1,13 @@
 name: Prod deploy test
 
-on: [workflow_dispatch, workflow_call]
+on: [workflow_dispatch]
 
 jobs:
   build_and_test:
     uses: ./.github/workflows/build_and_test.yml
 
-  deploy-stage:
-    name: Deploy Stage
+  deploy-prod:
+    name: Deploy Prod
     runs-on: ubuntu-latest
     needs: [build_and_test]
     steps:
