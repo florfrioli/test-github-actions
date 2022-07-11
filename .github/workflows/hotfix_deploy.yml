@@ -5,8 +5,8 @@ on: [workflow_dispatch]
 jobs:
   deploy-prod:
     name: Deploy Prod
-    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
     steps:
       - name: Approve deploy 
         uses: trstringer/manual-approval@v1

@@ -1,10 +1,11 @@
 name: Prod deploy test
 
 on: [workflow_dispatch]
-if: github.ref == 'refs/heads/main'
 
 jobs:
   build_and_test:
+    name: Testststststst
+    if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/build_and_test.yml
 
   deploy-prod:
