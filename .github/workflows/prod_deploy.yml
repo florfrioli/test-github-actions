@@ -1,15 +1,15 @@
-name: Stage deploy test
+name: Prod deploy test
 
 on: [workflow_dispatch]
 
 jobs:
   build_and_test:
-    name: Tests
-    if: startsWith(github.ref, 'release')
+    name: Testststststst
+    if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/build_and_test.yml
 
-  deploy-stage:
-    name: Deploy Stage
+  deploy-prod:
+    name: Deploy Prod
     runs-on: ubuntu-latest
     needs: [build_and_test]
     steps:

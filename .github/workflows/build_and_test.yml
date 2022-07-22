@@ -1,15 +1,21 @@
 name: Build & Test
 on:
-  pull_request:
-    types: [opened, synchronize]
-  push:
-    branches:
-      - main
-      - /release-.*/
   workflow_call:
 
 jobs:
+  check_run:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@v3.4.0
+        with:
+          skip_after_successful_duplicate: 'true'
+          skip-duplicate-actions: 'same_content_newer'
   build_and_test:
+    needs: check_run
+    if: ${{ needs.check_run.outputs.should_skip != 'true' }}
     runs-on: ubuntu-latest
     steps:
     # This action checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it

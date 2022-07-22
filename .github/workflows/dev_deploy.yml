@@ -1,9 +1,11 @@
-name: Development deploy test with approval
+name: Development deploy test
 
-on: [workflow_dispatch, workflow_call]
+on: [workflow_dispatch]
 
 jobs:
   build_and_test:
+    name: Teststststs
+    if: startsWith(github.ref, 'release')
     uses: ./.github/workflows/build_and_test.yml
 
   deploy-dev:
@@ -11,11 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build_and_test]
     steps:
-      - name: Approve deploy 
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: florfrioli
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install AWS & ElasticBeanstalk dependencies
