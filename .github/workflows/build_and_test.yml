@@ -1,5 +1,7 @@
 name: Build & Test
 on:
+  pull_request:
+    types: [assigned]
   workflow_call:
 
 jobs:
